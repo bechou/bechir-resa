@@ -3,13 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="css/monfichier.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
         {% block header %} {% endblock %} 
-        <p>Vous êtes sur mon site web</p>
+       
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/popper.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+
+        {% endblock %}
     </body>
 </html>
