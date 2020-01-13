@@ -23,6 +23,15 @@ class HomeController extends Controller {
                'tableau' => $prenoms]
         );
     }
+
+    /**
+     * @Route("/hello/{prenom}", name="hello")
+     * @Route("/hello")
+     */
+    public function hello($prenom = toto)
+    {
+        return new Response("Bonjour ". $prenom);
+    }
 }
 
 
