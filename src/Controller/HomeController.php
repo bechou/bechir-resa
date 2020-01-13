@@ -25,12 +25,13 @@ class HomeController extends Controller {
     }
 
     /**
-     * @Route("/hello/{prenom}", name="hello")
-     * @Route("/hello")
+     * @Route("/bonjour/{prenom}/age/{age}", name="hello")
+     * @Route("/salut", name="hello_base")
+     * @Route("/bonjour/{prenom}", name="hello_prenom")
      */
-    public function hello($prenom = toto)
+    public function hello($prenom = "anonyme", $age=0)
     {
-        return new Response("Bonjour ". $prenom);
+        return new Response("Bonjour ". $prenom . " Vous avez " . $age . "ans");
     }
 }
 
