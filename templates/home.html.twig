@@ -1,29 +1,124 @@
  {% extends "base.html.twig" %}
  
-{% block header %}
-    <h2>Voici le header</h2>
+{% block title %}
+    Bienvenue sur le réseau d'appartements
 {% endblock %}
 
     {% block body %}
-    <h1> {{ title | upper }}</h1>
-    <a href="{{ path('hello', {'prenom' : 'Lior', 'age' : 31}) }}">Allez voir hello</a>
+    <div class="container">
+    <div class="jumbotron mt-3 ">
+        <h1 class="display-3">Bienvenue sur SynBnb !</h1>
+        <p class="lead">Mise en en relation entre propriétaires.</p>
+        <hr class="my-4">
+        <p>Vous êtes voyageur ? Et vous voulez voir où vous pourrez loger pour votre prochain déplacement ?</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+      </div>
 
-    {% if age >= 18 %}
-        <p>Adulte</p>
+      <h2 class="h1 mt-3 mb-4"> Nos appartements stars</h2>
+      <div class="row mt-5">
+          <div class="col-md-4">
+              <div class="card bg-light mb-3">
+                  <div class="card-header text-center">
+                      3 chambres, <b>49&euros; / nuit</b> <br/>
+                      <small>Non noté</small>
+                  </div>
+                  <img src="http://placehold.it/1000x400" alt="Image de l'appartement"
+                  style="height: 200px; width : 100%; display : block">
 
-     {% elseif age >=12 %}
-        <p>Ado</p>
+                  <div class="card-body">
+                      <h4 class="card-title">
+                          Appart de ouf
+                      </h4>
+                      <p class="card-text">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                          Voluptates, est! Praesentium impedit laborum deserunt quo quibusdam perferendis corporis ea aperiam? Vel debitis provident ipsum voluptate officiis illum ad omnis iusto.
+                      </p>
+                      <a href="#" class="btn btn-secondary"> En savoir plus</a>
+                  </div>
+              </div>
+          </div>
 
-    {% else %}
-        <p>Enfant</p>
-    {% endif %}
+          <div class="col-md-4">
+            <div class="card bg-light mb-3">
+                <div class="card-header text-center">
+                    3 chambres, <b>49&euros; / nuit</b> <br/>
+                    <small>Non noté</small>
+                </div>
+                <img src="http://placehold.it/1000x400" alt="Image de l'appartement"
+                style="height: 200px; width : 100%; display : block">
 
-    {% for prenom, age in tableau %}
-        {{prenom}} a {{age}} ans <br/>
-    {% endfor %}
+                <div class="card-body">
+                    <h4 class="card-title">
+                        Appart de ouf
+                    </h4>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Voluptates, est! Praesentium impedit laborum deserunt quo quibusdam perferendis corporis ea aperiam? Vel debitis provident ipsum voluptate officiis illum ad omnis iusto.
+                    </p>
+                    <a href="#" class="btn btn-secondary"> En savoir plus</a>
+                </div>
+            </div>
+        </div>
 
-    {% for compteur in 0..10 %}
-        {{compteur}}
-    {% endfor %}
+        <div class="col-md-4">
+            <div class="card bg-light mb-3">
+                <div class="card-header text-center">
+                    3 chambres, <b>49&euros; / nuit</b> <br/>
+                    <small>Non noté</small>
+                </div>
+                <img src="http://placehold.it/1000x400" alt="Image de l'appartement"
+                style="height: 200px; width : 100%; display : block">
 
+                <div class="card-body">
+                    <h4 class="card-title">
+                        Appart de ouf
+                    </h4>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Voluptates, est! Praesentium impedit laborum deserunt quo quibusdam perferendis corporis ea aperiam? Vel debitis provident ipsum voluptate officiis illum ad omnis iusto.
+                    </p>
+                    <a href="#" class="btn btn-secondary"> En savoir plus</a>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <h2>Nos propriétaires stars !</h2>
+
+      <div class="row">
+          <div class="col">
+              <div class="card border-secondary mb-3">
+                  <div class="card-body">
+                      <h4 class="card-title">Lior </h4>
+                      <hr>
+                      <div class="card-text">
+                          <img src="http://placehold.it" alt="Avatar de Lior" class="float-left mr-3"
+                          class="float.left mr-3">
+                          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ratione quaerat, sit fuga amet nostrum labore maxime quidem laborum exercitationem sapiente debitis assumenda suscipit. Sequi officiis qui delectus optio vel.</p>
+                            <a href="#" class="btn btn-success float-right"> En savoir plus</a>
+                        </div>
+                  </div>
+
+              </div>
+          </div>
+          <div class="col">
+            <div class="card border-secondary mb-3">
+                <div class="card-body">
+                    <h4 class="card-title">Lior </h4>
+                    <hr>
+                    <div class="card-text">
+                        <img src="http://placehold.it" alt="Avatar de Lior" class="float-left mr-3"
+                        class="float.left mr-3">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ratione quaerat, sit fuga amet nostrum labore maxime quidem laborum exercitationem sapiente debitis assumenda suscipit. Sequi officiis qui delectus optio vel.</p>
+                          <a href="#" class="btn btn-success float-right"> En savoir plus</a>
+                      </div>
+                </div>
+
+            </div>
+        </div>
+      </div>
+
+    </div>
 {% endblock %}
