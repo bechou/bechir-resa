@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+ {% extends "base.html.twig" %}
+ 
+{% block header %}
+    <h2>Voici le header</h2>
+{% endblock %}
+
+    {% block body %}
     <h1> {{ title | upper }}</h1>
     <a href="{{ path('hello', {'prenom' : 'Lior', 'age' : 31}) }}">Allez voir hello</a>
 
@@ -27,6 +25,5 @@
     {% for compteur in 0..10 %}
         {{compteur}}
     {% endfor %}
-    
-</body>
-</html>
+
+{% endblock %}
