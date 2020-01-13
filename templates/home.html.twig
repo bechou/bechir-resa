@@ -8,6 +8,25 @@
 </head>
 <body>
     <h1> {{ title }}</h1>
+
+    {% if age >= 18 %}
+        <p>Adulte</p>
+
+     {% elseif age >=12 %}
+        <p>Ado</p>
+
+    {% else %}
+        <p>Enfant</p>
+    {% endif %}
+
+    {% for prenom, age in tableau %}
+        {{prenom}} a {{age}} ans <br/>
+    {% endfor %}
+
+    {% for compteur in 0..10 %}
+        {{compteur}}
+        
+    {% endfor %}
     
 </body>
 </html>

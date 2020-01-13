@@ -14,9 +14,13 @@ class HomeController extends Controller {
      */
     public function home()
     {
+        $prenoms = ["Alex" => 31, "Bryan" => 12, "Carl" => 55] ;
+
         return $this->render(
                'home.html.twig',
-               ['title' => "Site en construction"]
+               ['title' => "Site en construction",
+               'age' => 12,
+               'tableau' => $prenoms]
         );
     }
 }
