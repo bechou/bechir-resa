@@ -4,8 +4,40 @@
 
 {% block body %}
 
-<div class="container">
-    <h1>{{ad.title}}</h1>
+<div class="ad-title" style="background-image: url({{ ad.coverImage }})">
+    <div class="container">
+        <h1>{{ad.title}}</h1>
+        <p>{{ad.introduction}}</p>
+        <p class="h2">
+            <strong>{{ad.rooms}} chambres</strong> pour <strong>{{ad.price}}</strong>
+             par nuiy
+        </p>
+
+        <a href="#" class="btn btn-primary">Réserver</a>
+    </div>
 </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mb-3">
+            {{ad.content}}
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col-4">
+                    <img src="http://placehold.it/64x64" alt="Avatar">
+                </div>
+                <div class="col">
+                        <h3>Joseph CLAUSE</h3>
+                        <span class="badge badge-primary">3 annonces</span>
+                </div>
+            </div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit sequi mollitia quo sint placeat reprehenderit consequatur architecto. Praesentium, reiciendis atque.</p>
+            <p>Repellendus distinctio odio voluptas labore voluptatibus ipsa, nihil rem soluta, earum ipsam unde sit, autem numquam eius quis. Ut, illo?</p>
+            <p>Debitis doloribus ipsam, totam illum rem provident sed dolorum cum? Unde perspiciatis, dolorem omnis doloremque alias eligendi fuga ab rem.</p>    
+        </div> 
+    </div>
+</div>
+
 
 {% endblock %}
