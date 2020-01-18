@@ -24,8 +24,9 @@ class AppFixtures extends Fixture
 
         /* une balise ouvrante + les elem du tableau paragraphe 
         qui sont séparés par une fin de paragraphe et un début de paragraphe */
+        //$content = '<p>'.join('</p><p>', $faker->paragraphs(5)).'</p>'; 
         $content = '<p>'.join('</p><p>', $faker->paragraphs(5)).'</p>'; 
-        //var_dump($content);
+        //dump($content);
 
 
         $ad->setTitle($title)
