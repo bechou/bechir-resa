@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Ad;
 use App\Form\AdType;
 use App\Repository\AdRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -32,7 +33,7 @@ class AdController extends Controller
      * 
      * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $ad = new Ad();
         $form = $this->createForm(AdType::class, $ad);
