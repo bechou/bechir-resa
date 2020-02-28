@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Edition d'une annonce {% endblock %}
+
+{% block body %}   
+
+<div class="container">
+    <h1>Modifier l'annonce {{ad.title}}</h1>
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary">Modifier l'annonce</button>
+
+    {{ form_end(form) }}
+</div>
+
+{% endblock %}
+
+{# manière dont le champ va s'afficher #}
+{% block _ad_images_widget %} {# nom du champ. Inspecter l'élément #}
+    <p>Ajouter vos images</p>
+
+    {{ form_widget(form) }}
+    <input type="hidden" id="widgets-counter" value="0">
+
+    <div class="form-group">
+        <button type="button" id="add-image" class="btn btn-primary">
+            Ajouter une image
+        </button>
+    </div>
+{% endblock %}
+
+{% block _ad_images_entry_row %} {# redéfintion de chaque entrée #}
+    {{ form_widget(form) }}
+{% endblock %}
+
+{% block _ad_images_entry_widget %} {# affichage des entrées de la collection #}
+    <div class="form-group" id="block_{{id}}">
+        <div class="row">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col">
+                        {{ form_widget(form.url) }}
+                    </div>
+                    <div class="col">
+                        {{ form_widget(form.caption) }}
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-2">
+                <button type="button" data-action="delete" data-target="#block_{{id}}" class="btn btn-danger">X</button>
+            </div>
+        </div>
+        
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('#add-image').click(function(){
+            //Num des champs
+            const index = +$('#widgets-counter').val;
+            //Prototype des entrées
+            const tmpl = $('#ad_images').data('prototype').replace(/__name__/g, index);
+            console.log(tmpl); 
+            //Injection du code dans la div
+            $('#ad_images').append(tmpl);
+
+            $('#widgets-counter').val(index + 1);
+
+            handleDeleteButtons();
+        });
+
+        function handleDeleteButtons() {
+            $('button[data-action="delete"]').click(function(){
+                    const target = this.dataset.target;
+                    $target.remove();
+            });
+        }
+    </script>
+
+{% endblock %}
