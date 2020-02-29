@@ -51,7 +51,8 @@ class AdType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Ad::class,
-            'allow_add' => true
+            'allow_add' => true,
+            'allow_delete' => true
            
         ]);
     }
