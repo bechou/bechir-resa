@@ -6,12 +6,15 @@ use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class User
+//Screen 4
+class User implements UserInterface
+//Fin screen 4
 {
     /**
      * @ORM\Id()
@@ -215,4 +218,26 @@ class User
 
         return $this;
     }
+    
+    /** Fonctions UserInterface à implémenter obligatoirement */
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
+
+    public function getPassword()
+    {
+        return $this->hash;
+    }
+
+    //Inutile pour l'algo bcrypt
+    public function getSalt() { }
+
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    public function eraseCredentials(){ }
+    
 }
