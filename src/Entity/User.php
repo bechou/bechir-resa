@@ -90,6 +90,12 @@ class User implements UserInterface
      * @ORM\PrePersist
      * @ORM\PreUpdate
      */
+
+    public function getFullName()
+    {
+        return "{$this->firstName} {$this->lastName}";
+    }
+
     public function initializeSlug()
     {
         if(empty($this->slug))

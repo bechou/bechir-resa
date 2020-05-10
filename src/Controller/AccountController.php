@@ -7,6 +7,7 @@ use App\Form\AccountType;
 use App\Entity\PasswordUpdate;
 use App\Form\RegistrationType;
 use App\Form\PasswordUpdateType;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
@@ -118,7 +119,8 @@ class AccountController extends AbstractController
         {
             if(!password_verify($passwordUpdate->getOldPassword(), $user->getHash()))
             {
-
+                //Gestion erreur
+                $form->get('oldPassword')->addError(new FormError("Le mot de passe tapé n'est pas votre mot de passe actuel"));
             }
             else
             {
