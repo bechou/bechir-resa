@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\AccountType;
+use App\Entity\PasswordUpdate;
 use App\Form\RegistrationType;
+use App\Form\PasswordUpdateType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
@@ -95,6 +97,50 @@ class AccountController extends AbstractController
 
 
         return $this->render('account/profile.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/account/password-update", name="account_password")
+     */
+    public function updatePassword(Request $request, UserPasswordEncoderInterface $encoder, ObjectManager $manager)
+    {
+        $passwordUpdate = new PasswordUpdate();
+
+        $user = $this->getUser();
+
+        $form = $this->createForm(PasswordUpdateType::class, $passwordUpdate);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            if(!password_verify($passwordUpdate->getOldPassword(), $user->getHash()))
+            {
+
+            }
+            else
+            {
+                $newPassword = $passwordUpdate->getNewPassword();
+                //Entité dans laquelle encoder + nouveau mdp
+                $hash = $encoder->encodePassword($user, $newPassword);
+
+                $user->setHash($hash);
+
+                $manager->persist($user);
+                $manager->flush();
+
+                $this->addFlash(
+                    'success',
+                    "Mot de passe mis à jour."
+                );
+
+                return $this->redirectToRoute('homepage');
+            }
+        }
+
+        return $this->render('account/password.html.twig', [
             'form' => $form->createView()
         ]);
     }
