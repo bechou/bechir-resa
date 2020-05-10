@@ -59,6 +59,11 @@ class User implements UserInterface
     private $hash;
 
     /**
+     * @Assert\EqualTo(propertyPath="hash", message="Mot de passe non identique")
+     */
+    private $passwordConfirm;
+
+    /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min=10, minMessage="Votre introduction doit faire au moins 10 caraactères")
      */
@@ -160,6 +165,18 @@ class User implements UserInterface
     public function setHash(string $hash): self
     {
         $this->hash = $hash;
+
+        return $this;
+    }
+
+    public function getPasswordConfirm(): ?string
+    {
+        return $this->passwordConfirm;
+    }
+
+    public function setPasswordConfirm(string $passwordConfirm): self
+    {
+        $this->passwordConfirm = $passwordConfirm;
 
         return $this;
     }

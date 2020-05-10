@@ -24,6 +24,7 @@ class RegistrationType extends ApplicationType
             ->add('email', EmailType::class, $this->getConfiguration("Email", "Votre adresse email"))
             ->add('picture', UrlType::class, $this->getConfiguration("Photo de profil", "Url de l'avatar"))
             ->add('hash', PasswordType::class, $this->getConfiguration("Mot de passe", "Votre mot de passe"))
+            ->add('passwordConfirm', PasswordType::class, $this->getConfiguration("Confirmation de mot de passe", "Confirmez votre mot de passe"))
             ->add('introduction', TextType::class, $this->getConfiguration("Introduction", "Présentez vous"))
             ->add('description', TextareaType::class, $this->getConfiguration("Description détaillée", "Présentez vous en détail"))
         ;
