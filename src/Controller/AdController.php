@@ -38,17 +38,9 @@ class AdController extends Controller
     public function create(Request $request, ObjectManager $manager)
     {
         $ad = new Ad();
-        /*$image = new Image();
-        $image->setUrl('http://placehold.it/400x200')
-                ->setCaption('Titre 1');
-        $ad->addImage($image);
-
-        $image2 = new Image();
-        $image2->setUrl('http://placehold.it/400x200')
-                ->setCaption('Titre 2');
-        $ad->addImage($image2);*/
         
         $form = $this->createForm(AdType::class, $ad);
+        dump($this->getUser());
 
         //Parcourit la requete et extraire les données
         //Fais lien entre $request et $ad
@@ -63,6 +55,7 @@ class AdController extends Controller
                 $manager->persist($image);
             }
 
+            $ad->setAuthor($this->getUser());
             $manager->persist($ad);
             $manager->flush();
 
