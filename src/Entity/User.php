@@ -263,7 +263,15 @@ class User implements UserInterface
     /** Fonctions UserInterface à implémenter obligatoirement */
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        //map : transforme un tableau de role en tableau avec seulement des titres
+        $roles = $this->userRoles->map(function($role)
+        {
+            return $role->getTitle();
+        })->toArray();
+
+        $roles[] = 'ROLE_USER';
+        
+        return $roles;
     }
 
     public function getPassword()
