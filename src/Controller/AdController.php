@@ -11,7 +11,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class AdController extends Controller
 {
@@ -32,6 +34,7 @@ class AdController extends Controller
      * Créer une annonce
      * 
      * @Route("/ads/new", name="ads_create")
+     * @IsGranted("ROLE_USER")
      * 
      * @return Response
      */
@@ -77,6 +80,8 @@ class AdController extends Controller
      * Edition d'une annonce
      * 
      * @Route("/ads/{slug}/edit", name="ads_edit")
+     * @Security("is_granted('ROLE_USER') and user === ad.getAuthor()", message ="Cette annonce ne vous appartient pas.
+     * Vous ne pouvez la modifier")
      */
     public function edit(Ad $ad, Request $request, ObjectManager $manager){
 
