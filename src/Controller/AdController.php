@@ -40,7 +40,6 @@ class AdController extends Controller
         $ad = new Ad();
         
         $form = $this->createForm(AdType::class, $ad);
-        dump($this->getUser());
 
         //Parcourit la requete et extraire les données
         //Fais lien entre $request et $ad
