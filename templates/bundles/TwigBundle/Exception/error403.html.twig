@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title%}Page interdire {% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="alert alert-danger">
+            <h1>Oups ! Accès non autorisé.</h1> 
+        </div>
+
+        <a href="{{ path('homepage')}}" class="btn btn-primary"> Retourner à l'accueil</a>
+        <a href="{{ path('ads_index')}}" class="btn btn-success"> Nos annonces</a>
+    </div>
+
+{% endblock %}
