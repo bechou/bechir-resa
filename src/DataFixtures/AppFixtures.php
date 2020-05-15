@@ -94,7 +94,6 @@ class AppFixtures extends Fixture
         $user = $users[mt_rand(0,count($users) - 1 )];
         //dump($content);
 
-
         $ad->setTitle($title)
             ->setCoverImage($coverImage)
             ->setIntroduction($introduction)
