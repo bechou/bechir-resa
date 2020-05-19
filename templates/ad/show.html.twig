@@ -58,7 +58,23 @@
                   <span class="sr-only">Next</span>
                 </a>
               </div>
-        </div>
+              <hr>
+
+              {% if ad.comments|length > 0 %}
+                <h2 class="mb-3">Commentaires de nos voyageurs :</h2>
+                {% for comment in ad.comments %}  
+                  <div class="bg-light rounded mb-3 py-3 px-3">
+                    <strong>{{ comment.author.fullName }}</strong> a dit :
+                    <blockquote>
+                      {{comment.content}}
+                    </blockquote>
+                    <strong>Note donnée par {{comment.author.fullName}} : </strong> {{comment.rating}}
+                  </div>
+
+                {% endfor %}
+              {% else %}
+                  <h2>Aucun commentaire</h2>
+              {% endif %}
         <div class="col">
             {% set a = ad.author %}
             <div class="row mb-3 align-items-center">
