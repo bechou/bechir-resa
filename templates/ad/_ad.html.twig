@@ -4,7 +4,13 @@
             <div class="card bg-light mb-3">
                 <div class="card-header text-center">
                     {{ ad.rooms }} chambres, <b>{{ ad.price }}&euro; / nuit</b> 
-                    <small>Non noté</small>
+
+                    {% if ad.comments|length > 0 %}
+                    {% include 'partials/rating.html.twig' with {'rating' : ad.getAvgRatings} %}
+                    {% else %}
+                        <small>Non noté</small>
+                    {% endif %}
+
                 </div>
 
             <a href="{{ url }}">
