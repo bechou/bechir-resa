@@ -39,3 +39,8 @@ div.carousel-caption {
 td.disabled:hover {
     color: firebrick !important
 }
+
+.avatar-micro {
+    max-width: 20px;
+    max-height: 20px;
+}
