@@ -23,9 +23,10 @@ security:
             form_login:
                 login_path: admin_account_login
                 check_path: admin_account_login
+                default_target_path: admin_ads_index
 
             logout:
-                path: account_logout
+                path: admin_account_logout
                 target: homepage
         main:
             anonymous: true
@@ -50,5 +51,6 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:    
         - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/ads, roles: ROLE_ADMIN }
         - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
