@@ -58,11 +58,12 @@ class Booking
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $comment;
+    private $comment; 
 
-
+    
     /**
      * @ORM\PrePersist
+     * @ORM\PreUpdate
      */
     public function prePersist()
     {
@@ -77,6 +78,7 @@ class Booking
         }
 
     }
+
 
     public function isBookableDates()
     {

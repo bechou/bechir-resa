@@ -13,6 +13,9 @@
                     <th>Date de réservartion</th>
                     <th>Visiteur</th>
                     <th>Annonce</th>
+                    <th>Durée</th>
+                    <th>Montant</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
 
@@ -23,6 +26,8 @@
                     <td>{{booking.createdAt|date('d/m/Y')}}</td>
                     <td><img src="{{booking.booker.picture}}" alt="" class="avatar avatar-micro"> {{booking.booker.fullName}}</td>
                     <td>{{booking.ad.title}}</td>
+                    <td>{{booking.duration}}</td>
+                    <td>{{booking.amount}}</td>
                     <td>
                         <a href="#" class="btn btn-primary">
                             <i class="fas fa-pen"></i>
