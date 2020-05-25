@@ -1,5 +1,5 @@
 {% extends 'admin/base.html.twig' %}
-
+{% form_theme form _self %}
 {% block title %} Modification de l'annonce numero {{ad.id}} {% endblock %}
 
 {% block body %}
@@ -95,5 +95,47 @@
         
         {{form_end(form)}}
     </div>
+
+{% endblock %}
+
+{% block _ad_images_widget %}
+    {{ form_widget(form) }}
+{% endblock %}
+
+{# Suppression label 0,1,2... #}
+{% block _ad_images_entry_row %}
+    <div id="block_{{id}}">
+        {{ form_widget(form) }}
+    </div>
+{% endblock %}
+
+{% block _ad_images_entry_widget %}
+    <div class="row align-items-center">
+        <div class="col-4">
+            {% if value %}
+                <img src="{{value.url}}" class="img-fluid" alt="">
+            {% endif %}
+        </div>
+        <div class="col-6">
+            {{form_row(form.caption) }}
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-danger" data-action="delete" data-target="#block_{{id}}">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        $(document).ready(function(){
+            $('[data-action="delete"]').on('click', function(){
+                const target = this.dataset.target;
+                $(target).remove();
+            });
+        });
+    </script>
 
 {% endblock %}

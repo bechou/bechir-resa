@@ -28,7 +28,6 @@ class AdminAdController extends AbstractController
     public function edit(Ad $ad, Request $request, ObjectManager $manager)
     {
         $form = $this->createForm(AdType::class, $ad);
-
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
@@ -46,5 +45,30 @@ class AdminAdController extends AbstractController
             'ad' => $ad,
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/admin/ads/{id}/delete", name="admin_ads_delete")
+     */
+    public function delete(Ad $ad, Request $request, ObjectManager $manager)
+    {
+        if(count($ad->getBookings()) > 0)
+        {
+            $this->addFlash(
+                'warning',
+                "Vous ne pouvez pas supprimer l'annonce car elle possède une réservation"
+            );
+        }
+        else {
+            $manager->remove($ad);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "L'annonce <strong>{$ad->getTitle()}</strong> a bien été enregistrée !");
+
+            }
+        
+        return $this->redirectToRoute('admin_ads_index');
     }
 }

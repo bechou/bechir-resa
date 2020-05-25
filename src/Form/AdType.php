@@ -32,7 +32,9 @@ class AdType extends ApplicationType
             ->add('price', MoneyType::class, $this->getConfiguration("Prix par nuit", "Entrer le prix"))
             ->add('images', CollectionType::class,  
             [
-                'entry_type' => ImageType::class
+                'entry_type' => ImageType::class,
+                'allow_add' => true,
+                'allow_delete' => true
             ])
         ;
     }
@@ -41,9 +43,6 @@ class AdType extends ApplicationType
     {
         $resolver->setDefaults([
             'data_class' => Ad::class,
-            'allow_add' => true,
-            'allow_delete' => true
-           
         ]);
     }
 }
