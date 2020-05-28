@@ -20,6 +20,7 @@ class AdminBookingController extends AbstractController
     {
         $pagination->setEntityClass(Booking::class)
                     ->setPage($page);
+                   
 
         $bookings = $pagination->getData();
         
