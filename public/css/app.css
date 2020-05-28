@@ -1,4 +1,4 @@
-div.container{
+div.container, div.container-fluid{
     margin-top: 20px;
 }
 
@@ -44,3 +44,4 @@ td.disabled:hover {
     max-width: 20px;
     max-height: 20px;
 }
+

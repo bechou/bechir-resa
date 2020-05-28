@@ -41,6 +41,11 @@ class PaginationService {
     //Recup des données
     public function getData()
     {
+        if(empty($this->entityClass))
+        {
+            throw new \Exception("Entité non renseigné");
+        }
+
         $offset = $this->currentPage * $this->limit - $this->limit;
          
         $repo = $this->manager->getRepository($this->entityClass);
@@ -53,6 +58,11 @@ class PaginationService {
     //Nombre de pages
     public function getPages()
     {
+        if(empty($this->entityClass))
+        {
+            throw new \Exception("Entité non renseigné");
+        }
+        
         $repo = $this->manager->getRepository($this->entityClass);
         $total = count($repo->findAll());
 
