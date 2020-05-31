@@ -4,13 +4,12 @@
         <meta charset="UTF-8">
         <title>SymBNB - {% block title %}Welcome!{% endblock %}</title>
 
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
         
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" 
         crossorigin="anonymous"/>
 
-        <link rel="stylesheet" href="/css/app.css">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -19,11 +18,11 @@
         {% block header %} {% endblock %} 
         {% block body %}{% endblock %}
         <script src="/js/jquery.min.js"></script>
-        <script src="/public/js/jquery.min.js"></script>
+        <script src="/js/jquery.min.js"></script>
         {% include 'partials/footer.html.twig' %}
         {% block javascripts %}
         <script src="/js/jquery.min.js"></script>
-        <script src="/public/js/jquery.min.js"></script>
+        <script src="/js/jquery.min.js"></script>
         <script src="/js/popper.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         {% endblock %}
